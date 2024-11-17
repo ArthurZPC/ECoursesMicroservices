@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECoursesMicroservices.Infrastructure\ECoursesMicroservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\ECoursesMicroservices.Main.Data\ECoursesMicroservices.Main.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Authors\Commands\" />
+    <Folder Include="Features\Categories\Commands\" />
+    <Folder Include="Features\Courses\Commands\" />
+    <Folder Include="Features\Tags\Commands\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>

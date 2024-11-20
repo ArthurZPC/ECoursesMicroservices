@@ -24,9 +24,9 @@ public class GetAuthorsPagedQueryHandler : IRequestHandler<GetAuthorsPagedQuery,
         var authors = _context.Authors.AsNoTracking();
         var totalCount = await authors.CountAsync();
 
-        FilterQuery(request, authors);
+        var filteredAuthors = GetFilteredQuery(request, authors);
 
-        var result = await authors.ToListAsync();
+        var result = await filteredAuthors.ToListAsync();
 
         return new PagedResult<AuthorDto>
         {
@@ -38,23 +38,22 @@ public class GetAuthorsPagedQueryHandler : IRequestHandler<GetAuthorsPagedQuery,
 
     }
 
-    private void FilterQuery(GetAuthorsPagedQuery request, IQueryable<Author> authors)
+    private IQueryable<Author> GetFilteredQuery(GetAuthorsPagedQuery request, IQueryable<Author> authors)
     {
-        if (request.IncludeChild)
-        {
-            authors = authors.Include(x => x.Courses);
-        }
+        var query = authors;
 
         if (!string.IsNullOrEmpty(request.FirstName))
         {
-            authors = authors.Where(x => x.FirstName.ToLower().Contains(request.FirstName.ToLower()));
+            query = query.Where(x => x.FirstName.ToLower().Contains(request.FirstName.ToLower()));
         }
 
         if (!string.IsNullOrEmpty(request.LastName))
         {
-            authors = authors.Where(x => x.LastName.ToLower().Contains(request.LastName.ToLower()));
+            query = query.Where(x => x.LastName.ToLower().Contains(request.LastName.ToLower()));
         }
 
-        authors = authors.GetPagedQuery(request.PageSize, request.PageNumber);
+        query = query.GetPagedQuery(request.PageSize, request.PageNumber);
+
+        return query;
     }
 }

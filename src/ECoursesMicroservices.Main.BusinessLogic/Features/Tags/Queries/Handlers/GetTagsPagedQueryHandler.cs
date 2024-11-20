@@ -24,9 +24,9 @@ public class GetTagsPagedQueryHandler : IRequestHandler<GetTagsPagedQuery, Paged
         var tags = _context.Tags.AsNoTracking();
         var totalCount = await tags.CountAsync();
 
-        FilterQuery(request, tags);
+        var filteredTags = GetFilteredQuery(request, tags);
 
-        var result = await tags.ToListAsync();
+        var result = await filteredTags.ToListAsync();
 
         return new PagedResult<TagDto>
         {
@@ -37,18 +37,15 @@ public class GetTagsPagedQueryHandler : IRequestHandler<GetTagsPagedQuery, Paged
         };
     }
 
-    private void FilterQuery(GetTagsPagedQuery request, IQueryable<Tag> tags)
+    private IQueryable<Tag> GetFilteredQuery(GetTagsPagedQuery request, IQueryable<Tag> tags)
     {
-        if (request.IncludeChild)
-        {
-            tags = tags.Include(x => x.Courses);
-        }
+        var query = tags;
 
         if (!string.IsNullOrEmpty(request.Name))
         {
             tags = tags.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
         }
 
-        tags = tags.GetPagedQuery(request.PageSize, request.PageNumber);
+        return tags.GetPagedQuery(request.PageSize, request.PageNumber);
     }
 }

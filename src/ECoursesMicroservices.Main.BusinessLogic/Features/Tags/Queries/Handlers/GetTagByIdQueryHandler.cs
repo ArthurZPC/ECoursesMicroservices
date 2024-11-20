@@ -18,19 +18,10 @@ public class GetTagByIdQueryHandler : IRequestHandler<GetTagByIdQuery, TagDto>
     }
     public async Task<TagDto> Handle(GetTagByIdQuery request, CancellationToken cancellationToken)
     {
-        var tags = _context.Tags.AsNoTracking();
-        FilterQuery(request, tags);
-
-        var tag = await tags.FirstOrDefaultAsync(x => x.Id == request.Id);
+        var tag = await _context.Tags
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
 
         return _mapper.Map<TagDto>(tag);
-    }
-
-    private void FilterQuery(GetTagByIdQuery request, IQueryable<Tag> tags)
-    {
-        if (request.IncludeChild)
-        {
-            tags = tags.Include(x => x.Courses);
-        }
     }
 }

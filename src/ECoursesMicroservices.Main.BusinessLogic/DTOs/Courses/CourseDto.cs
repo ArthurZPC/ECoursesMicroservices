@@ -1,6 +1,4 @@
-﻿using ECoursesMicroservices.Main.BusinessLogic.DTOs.Authors;
-using ECoursesMicroservices.Main.BusinessLogic.DTOs.Categories;
-using ECoursesMicroservices.Main.BusinessLogic.DTOs.Tags;
+﻿using ECoursesMicroservices.Main.BusinessLogic.DTOs.Tags;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.DTOs.Courses;
 public class CourseDto
@@ -10,8 +8,8 @@ public class CourseDto
     public string Description { get; set; } = string.Empty;
     public DateTime PublishDate { get; set; }
 
-    public CategoryDto Category { get; set; } = null!;
-    public AuthorDto Author { get; set; } = null!;
+    public Guid CategoryId { get; set; }
+    public Guid AuthorId { get; set; }
 
     public List<TagDto> Tags { get; set; } = new List<TagDto>();
 }

@@ -19,22 +19,11 @@ public class GetCourseByIdQueryHandler : IRequestHandler<GetCourseByIdQuery, Cou
 
     public async Task<CourseDto> Handle(GetCourseByIdQuery request, CancellationToken cancellationToken)
     {
-        var courses = _context.Courses.AsNoTracking();
-        FilterQuery(request, courses);
-
-        var course = await courses.FirstOrDefaultAsync(x => x.Id == request.Id);
+        var course = await _context.Courses
+            .Include(x => x.Tags)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
 
         return _mapper.Map<CourseDto>(course);
-    }
-
-    private void FilterQuery(GetCourseByIdQuery request, IQueryable<Course> courses)
-    {
-        if (request.IncludeChild)
-        {
-            courses = courses
-                .Include(x => x.Author)
-                .Include(x => x.Category)
-                .Include(x => x.Tags);
-        }
     }
 }

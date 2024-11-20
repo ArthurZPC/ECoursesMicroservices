@@ -18,22 +18,20 @@ public class GetTagsQueryHandler : IRequestHandler<GetTagsQuery, IEnumerable<Tag
     }
     public async Task<IEnumerable<TagDto>> Handle(GetTagsQuery request, CancellationToken cancellationToken)
     {
-        var tags = _context.Tags.AsNoTracking();
-        FilterQuery(request, tags);;
+        var tags = GetFilteredQuery(request);;
 
         return _mapper.Map<IEnumerable<TagDto>>(await tags.ToListAsync());
     }
 
-    private void FilterQuery(GetTagsQuery request, IQueryable<Tag> tags)
+    private IQueryable<Tag> GetFilteredQuery(GetTagsQuery request)
     {
-        if (request.IncludeChild)
-        {
-            tags = tags.Include(x => x.Courses);
-        }
+        var tags = _context.Tags.AsNoTracking();
 
         if (!string.IsNullOrEmpty(request.Name))
         {
             tags = tags.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
         }
+
+        return tags;
     }
 }

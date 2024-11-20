@@ -5,6 +5,4 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Queries;
 public class GetCourseByIdQuery : IRequest<CourseDto>
 {
     public Guid Id { get; set; }
-
-    public bool IncludeChild { get; set; }
 }

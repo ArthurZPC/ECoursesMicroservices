@@ -1,7 +1,6 @@
 ﻿namespace ECoursesMicroservices.Infrastructure.Models;
 public class ApiError
 {
-    public int StatusCode { get; set; }
-
+    public string Property { get; set; } = string.Empty;
     public string ErrorMessage { get; set; } = string.Empty;
 }

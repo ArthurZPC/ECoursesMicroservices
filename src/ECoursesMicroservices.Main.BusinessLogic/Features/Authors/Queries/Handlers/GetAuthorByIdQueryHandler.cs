@@ -19,19 +19,10 @@ public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, Aut
 
     public async Task<AuthorDto> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
     {
-        var authors = _context.Authors.AsNoTracking();
-        FilterQuery(request, authors);
-
-        var author = await authors.FirstOrDefaultAsync(x => x.Id == request.Id);
+        var author = await _context.Authors
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
 
         return _mapper.Map<AuthorDto>(author);
-    }
-
-    private void FilterQuery(GetAuthorByIdQuery request, IQueryable<Author> authors)
-    {
-        if (request.IncludeChild)
-        {
-            authors = authors.Include(x => x.Courses);
-        }
     }
 }

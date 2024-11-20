@@ -19,22 +19,20 @@ public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesQuery, IEn
 
     public async Task<IEnumerable<CategoryDto>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var categories = _context.Categories.AsNoTracking();
-        FilterQuery(request, categories);
+        var categories = GetFilteredQuery(request);
 
         return _mapper.Map<List<CategoryDto>>(await categories.ToListAsync());
     }
 
-    private void FilterQuery(GetCategoriesQuery request, IQueryable<Category> categories)
+    private IQueryable<Category> GetFilteredQuery(GetCategoriesQuery request)
     {
-        if (request.IncludeChild)
-        {
-            categories = categories.Include(x => x.Courses);
-        }
+        var query = _context.Categories.AsNoTracking();
 
         if (!string.IsNullOrEmpty(request.Name))
         {
-            categories.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
+            query = query.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
         }
+
+        return query;
     }
 }

@@ -5,5 +5,4 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Queries;
 public class GetCategoryByIdQuery : IRequest<CategoryDto>
 {
     public Guid Id { get; set; }
-    public bool IncludeChild { get; set; }
 }

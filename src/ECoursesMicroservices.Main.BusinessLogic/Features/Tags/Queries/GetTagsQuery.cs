@@ -5,5 +5,4 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Queries;
 public class GetTagsQuery : IRequest<IEnumerable<TagDto>>
 {
     public string? Name { get; set; }
-    public bool IncludeChild { get; set; }
 }

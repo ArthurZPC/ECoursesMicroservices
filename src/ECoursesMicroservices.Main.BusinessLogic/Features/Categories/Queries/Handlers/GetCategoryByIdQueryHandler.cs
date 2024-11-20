@@ -2,6 +2,7 @@
 using ECoursesMicroservices.Main.BusinessLogic.DTOs.Categories;
 using ECoursesMicroservices.Main.Data;
 using ECoursesMicroservices.Main.Data.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,28 +11,25 @@ public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery,
 {
     private readonly ECoursesContext _context;
     private readonly IMapper _mapper;
+    private readonly IValidator<GetCategoryByIdQuery> _queryValidator;
 
-    public GetCategoryByIdQueryHandler(ECoursesContext context, IMapper mapper)
+    public GetCategoryByIdQueryHandler(ECoursesContext context, 
+        IMapper mapper,
+        IValidator<GetCategoryByIdQuery> queryValidator)
     {
         _context = context;
         _mapper = mapper;
+        _queryValidator = queryValidator;
     }
 
     public async Task<CategoryDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var categories = _context.Categories.AsNoTracking();
-        FilterQuery(request, categories);
+        await _queryValidator.ValidateAndThrowAsync(request, cancellationToken);
 
-        var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == request.Id);
+        var category = await _context.Categories
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
 
         return _mapper.Map<CategoryDto>(category);
-    }
-
-    private void FilterQuery(GetCategoryByIdQuery request, IQueryable<Category> categories)
-    {
-        if (request.IncludeChild)
-        {
-            categories = categories.Include(x => x.Courses);
-        }
     }
 }

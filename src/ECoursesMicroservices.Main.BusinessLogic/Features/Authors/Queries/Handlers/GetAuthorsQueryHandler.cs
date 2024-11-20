@@ -19,27 +19,25 @@ public class GetAuthorsQueryHandler : IRequestHandler<GetAuthorsQuery, IEnumerab
 
     public async Task<IEnumerable<AuthorDto>> Handle(GetAuthorsQuery request, CancellationToken cancellationToken)
     {
-        var authors = _context.Authors.AsNoTracking();
-        FilterQuery(request, authors);
+        var authors = GetFilteredQuery(request);
 
         return _mapper.Map<List<AuthorDto>>(await authors.ToListAsync());
     }
 
-    private void FilterQuery(GetAuthorsQuery request, IQueryable<Author> authors)
+    private IQueryable<Author> GetFilteredQuery(GetAuthorsQuery request)
     {
-        if (request.IncludeChild)
-        {
-            authors = authors.Include(x => x.Courses);
-        }
+        var query = _context.Authors.AsNoTracking();
 
         if (!string.IsNullOrEmpty(request.FirstName))
         {
-            authors.Where(x => x.FirstName.ToLower().Contains(request.FirstName.ToLower()));
+            query = query.Where(x => x.FirstName.ToLower().Contains(request.FirstName.ToLower()));
         }
 
         if (!string.IsNullOrEmpty(request.LastName))
         {
-            authors.Where(x => x.LastName.ToLower().Contains(request.LastName.ToLower()));
+            query = query.Where(x => x.LastName.ToLower().Contains(request.LastName.ToLower()));
         }
+
+        return query;
     }
 }

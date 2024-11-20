@@ -9,5 +9,4 @@ public class GetCoursesQuery : IRequest<IEnumerable<CourseDto>>
     public Guid? CategoryId { get; set; }
     public List<Guid> TagIds { get; set; } = new List<Guid>();
     public Guid? AuthorId { get; set; }
-    public bool IncludeChild { get; set; }
 }

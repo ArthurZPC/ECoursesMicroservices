@@ -5,5 +5,4 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Queries;
 public class GetCategoriesQuery : IRequest<IEnumerable<CategoryDto>>
 {
     public string? Name { get; set; }
-    public bool IncludeChild { get; set; }
 }

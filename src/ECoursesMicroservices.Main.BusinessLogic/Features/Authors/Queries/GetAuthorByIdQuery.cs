@@ -5,5 +5,4 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Queries;
 public class GetAuthorByIdQuery : IRequest<AuthorDto>
 {
     public Guid Id { get; set; }
-    public bool IncludeChild { get; set; }
 }

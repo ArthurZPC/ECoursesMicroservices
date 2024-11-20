@@ -4,11 +4,8 @@ using ECoursesMicroservices.Main.BusinessLogic.DTOs.Authors;
 using MediatR;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Queries;
-public class GetAuthorsPagedQuery : IRequest<PagedResult<AuthorDto>>, IPagedRequest
+public class GetAuthorsPagedQuery : PagedQuery, IRequest<PagedResult<AuthorDto>>
 {
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public bool IncludeChild { get; set; }
-    public int PageSize { get; set; }
-    public int PageNumber { get; set; }
 }

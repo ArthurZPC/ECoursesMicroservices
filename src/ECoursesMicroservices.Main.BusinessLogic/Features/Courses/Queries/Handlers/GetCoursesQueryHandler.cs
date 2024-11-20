@@ -19,21 +19,14 @@ public class GetCoursesQueryHandler : IRequestHandler<GetCoursesQuery, IEnumerab
 
     public async Task<IEnumerable<CourseDto>> Handle(GetCoursesQuery request, CancellationToken cancellationToken)
     {
-        var courses = _context.Courses.AsNoTracking();
-        FilterQuery(request, courses);
+        var courses = GetFilteredQuery(request);
 
         return _mapper.Map<List<CourseDto>>(await courses.ToListAsync());
     }
 
-    private void FilterQuery(GetCoursesQuery request, IQueryable<Course> courses)
+    private IQueryable<Course> GetFilteredQuery(GetCoursesQuery request)
     {
-        courses = courses.Include(x => x.Tags);
-
-        if (request.IncludeChild)
-        {
-            courses = courses.Include(x => x.Category)
-                .Include(x => x.Author);
-        }
+        var courses = _context.Courses.Include(x => x.Tags).AsNoTracking();
 
         if (!string.IsNullOrEmpty(request.Name))
         {
@@ -59,5 +52,7 @@ public class GetCoursesQueryHandler : IRequestHandler<GetCoursesQuery, IEnumerab
         {
             courses = courses.Where(x => x.Tags.Any(y => request.TagIds.Contains(y.Id)));
         }
+
+        return courses;
     }
 }

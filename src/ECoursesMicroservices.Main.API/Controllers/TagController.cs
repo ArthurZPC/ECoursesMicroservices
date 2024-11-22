@@ -1,5 +1,4 @@
 ﻿using ECoursesMicroservices.Infrastructure.Helpers;
-using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Queries;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Authors\Commands\" />
-    <Folder Include="Features\Categories\Commands\" />
-    <Folder Include="Features\Courses\Commands\" />
-    <Folder Include="Features\Tags\Commands\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

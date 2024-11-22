@@ -4,6 +4,7 @@ using ECoursesMicroservices.Infrastructure.Models;
 using ECoursesMicroservices.Main.BusinessLogic.DTOs.Authors;
 using ECoursesMicroservices.Main.Data;
 using ECoursesMicroservices.Main.Data.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,15 +13,21 @@ public class GetAuthorsPagedQueryHandler : IRequestHandler<GetAuthorsPagedQuery,
 {
     private readonly ECoursesContext _context;
     private readonly IMapper _mapper;
+    private readonly IValidator<GetAuthorsPagedQuery> _validator;
 
-    public GetAuthorsPagedQueryHandler(ECoursesContext context, IMapper mapper)
+    public GetAuthorsPagedQueryHandler(ECoursesContext context,
+        IMapper mapper,
+        IValidator<GetAuthorsPagedQuery> validator)
     {
         _context = context;
         _mapper = mapper;
+        _validator = validator;
     }
 
     public async Task<PagedResult<AuthorDto>> Handle(GetAuthorsPagedQuery request, CancellationToken cancellationToken)
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+
         var authors = _context.Authors.AsNoTracking();
         var totalCount = await authors.CountAsync();
 

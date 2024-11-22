@@ -4,6 +4,7 @@ using ECoursesMicroservices.Infrastructure.Models;
 using ECoursesMicroservices.Main.BusinessLogic.DTOs.Tags;
 using ECoursesMicroservices.Main.Data;
 using ECoursesMicroservices.Main.Data.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
@@ -13,14 +14,20 @@ public class GetTagsPagedQueryHandler : IRequestHandler<GetTagsPagedQuery, Paged
 {
     private readonly ECoursesContext _context;
     private readonly IMapper _mapper;
+    private readonly IValidator<GetTagsPagedQuery> _validator;
 
-    public GetTagsPagedQueryHandler(ECoursesContext context, IMapper mapper)
+    public GetTagsPagedQueryHandler(ECoursesContext context,
+        IMapper mapper,
+        IValidator<GetTagsPagedQuery> validator)
     {
         _context = context;
         _mapper = mapper;
+        _validator = validator;
     }
     public async Task<PagedResult<TagDto>> Handle(GetTagsPagedQuery request, CancellationToken cancellationToken)
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+
         var tags = _context.Tags.AsNoTracking();
         var totalCount = await tags.CountAsync();
 

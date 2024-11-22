@@ -2,6 +2,7 @@ using ECoursesMicroservices.Main.API.Middlewares;
 using ECoursesMicroservices.Main.API.Settings;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators;
 using ECoursesMicroservices.Main.BusinessLogic.Helpers;
+using ECoursesMicroservices.Main.BusinessLogic.Validators;
 using ECoursesMicroservices.Main.Data;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ECoursesContext>((serviceProvider, options) =>
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<MapperProfile>());
 builder.Services.AddValidatorsFromAssemblyContaining<GetCategoryByIdValidator>(ServiceLifetime.Transient);
+builder.Services.AddScoped(typeof(IValidator<>), typeof(PagedQueryValidator<>));
 
 builder.Services.AddControllers();
 

@@ -26,17 +26,53 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\Authors\Validators\Resources\AuthorValidatorsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AuthorValidatorsResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Features\Categories\Validators\Resources\CategoryValidatorsResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CategoryValidatorsResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Features\Courses\Validators\Resources\CourseValidatorsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CourseValidatorsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Tags\Validators\Resources\TagValidatorsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TagValidatorsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\GlobalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Features\Authors\Validators\Resources\AuthorValidatorsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AuthorValidatorsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Features\Categories\Validators\Resources\CategoryValidatorsResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CategoryValidatorsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Courses\Validators\Resources\CourseValidatorsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CourseValidatorsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Tags\Validators\Resources\TagValidatorsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TagValidatorsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\GlobalResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

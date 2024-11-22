@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators.Resources {
+namespace ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Validators.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validator
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class CategoryValidatorsResources {
+    internal class TagValidatorsResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CategoryValidatorsResources() {
+        internal TagValidatorsResources() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validator
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators.Resources" +
-                            ".CategoryValidatorsResources", typeof(CategoryValidatorsResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Validators.Resources.TagVa" +
+                            "lidatorsResources", typeof(TagValidatorsResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,11 +62,11 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validator
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Category with Id &apos;{0}&apos; not found..
+        ///   Looks up a localized string similar to Tag with Id &apos;{0}&apos; not found..
         /// </summary>
-        internal static string CategoryId_NotFound {
+        internal static string TagId_NotFound {
             get {
-                return ResourceManager.GetString("CategoryId_NotFound", resourceCulture);
+                return ResourceManager.GetString("TagId_NotFound", resourceCulture);
             }
         }
     }

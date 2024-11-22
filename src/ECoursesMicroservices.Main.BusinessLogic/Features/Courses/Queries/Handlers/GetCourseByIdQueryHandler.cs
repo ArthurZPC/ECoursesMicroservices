@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ECoursesMicroservices.Main.BusinessLogic.DTOs.Courses;
 using ECoursesMicroservices.Main.Data;
-using ECoursesMicroservices.Main.Data.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,15 +10,21 @@ public class GetCourseByIdQueryHandler : IRequestHandler<GetCourseByIdQuery, Cou
 {
     private readonly ECoursesContext _context;
     private readonly IMapper _mapper;
+    private readonly IValidator<GetCourseByIdQuery> _validator;
 
-    public GetCourseByIdQueryHandler(ECoursesContext context, IMapper mapper)
+    public GetCourseByIdQueryHandler(ECoursesContext context,
+        IMapper mapper,
+        IValidator<GetCourseByIdQuery> validator)
     {
         _context = context;
         _mapper = mapper;
+        _validator = validator;
     }
 
     public async Task<CourseDto> Handle(GetCourseByIdQuery request, CancellationToken cancellationToken)
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+
         var course = await _context.Courses
             .Include(x => x.Tags)
             .AsNoTracking()

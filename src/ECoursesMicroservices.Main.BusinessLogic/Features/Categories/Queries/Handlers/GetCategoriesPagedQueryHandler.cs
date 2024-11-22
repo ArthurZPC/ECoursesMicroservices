@@ -4,6 +4,7 @@ using ECoursesMicroservices.Infrastructure.Models;
 using ECoursesMicroservices.Main.BusinessLogic.DTOs.Categories;
 using ECoursesMicroservices.Main.Data;
 using ECoursesMicroservices.Main.Data.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,15 +13,21 @@ public class GetCategoriesPagedQueryHandler : IRequestHandler<GetCategoriesPaged
 {
     private readonly ECoursesContext _context;
     private readonly IMapper _mapper;
+    private readonly IValidator<GetCategoriesPagedQuery> _validator;
 
-    public GetCategoriesPagedQueryHandler(ECoursesContext context, IMapper mapper)
+    public GetCategoriesPagedQueryHandler(ECoursesContext context,
+        IMapper mapper,
+        IValidator<GetCategoriesPagedQuery> validator)
     {
         _context = context;
         _mapper = mapper;
+        _validator = validator;
     }
 
     public async Task<PagedResult<CategoryDto>> Handle(GetCategoriesPagedQuery request, CancellationToken cancellationToken)
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+
         var categories = _context.Categories.AsNoTracking();
         var totalCount = await categories.CountAsync();
 

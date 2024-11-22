@@ -12,11 +12,12 @@ public class GetCategoryByIdValidator : AbstractValidator<GetCategoryByIdQuery>
         _context = context;
 
         RuleFor(x => x.Id)
-            .MustAsync(CategoryNotFound)
-            .WithMessage(x => string.Format(Resources.CategoryValidatorsResources.Category_NotFound, x.Id));
+            .NotEmpty()
+            .MustAsync(CategoryExists)
+            .WithMessage(x => string.Format(Resources.CategoryValidatorsResources.CategoryId_NotFound, x.Id));
     }
 
-    private async Task<bool> CategoryNotFound(Guid id, CancellationToken token)
+    private async Task<bool> CategoryExists(Guid id, CancellationToken token)
     {
         return await _context.Categories.AsNoTracking().AnyAsync(x => x.Id == id);
     }

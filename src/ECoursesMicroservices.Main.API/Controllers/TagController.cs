@@ -19,6 +19,7 @@ public class TagController : ControllerBase
     }
 
     [HttpGet("{id:Guid}")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetTagById(Guid id)
     {
         var tag = await _mediator.Send(new GetTagByIdQuery { Id = id });
@@ -28,6 +29,7 @@ public class TagController : ControllerBase
     }
 
     [HttpGet("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetAll([FromQuery] GetTagsQuery query)
     {
         var tags = await _mediator.Send(query);
@@ -37,6 +39,7 @@ public class TagController : ControllerBase
     }
 
     [HttpGet("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetAllPaged([FromQuery] GetTagsPagedQuery query)
     {
         var tags = await _mediator.Send(query);

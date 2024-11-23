@@ -64,9 +64,18 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Validators.Reso
         /// <summary>
         ///   Looks up a localized string similar to Tag with Id &apos;{0}&apos; not found..
         /// </summary>
-        internal static string TagId_NotFound {
+        internal static string Tag_TagId_NotFound {
             get {
-                return ResourceManager.GetString("TagId_NotFound", resourceCulture);
+                return ResourceManager.GetString("Tag_TagId_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag with Name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string Tag_TagName_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Tag_TagName_AlreadyExists", resourceCulture);
             }
         }
     }

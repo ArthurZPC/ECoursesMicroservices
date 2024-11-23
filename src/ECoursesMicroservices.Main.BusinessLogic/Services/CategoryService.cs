@@ -2,7 +2,7 @@
 using ECoursesMicroservices.Main.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECoursesMicroservices.Main.BusinessLogic.Services.ValidationServices;
+namespace ECoursesMicroservices.Main.BusinessLogic.Services;
 public class CategoryService : ICategoryService
 {
     private readonly ECoursesContext _context;

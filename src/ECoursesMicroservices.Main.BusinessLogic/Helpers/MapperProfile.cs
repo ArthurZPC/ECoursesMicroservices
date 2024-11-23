@@ -44,18 +44,14 @@ public class MapperProfile : Profile
 
         CreateMap<CreateTagCommand, Tag>();
 
-        CreateMap<UpdateAuthorCommand, Author>()
-            .ForMember(x => x.Id, opt => opt.Ignore());
+        CreateMap<UpdateAuthorCommand, Author>();
 
-        CreateMap<UpdateCategoryCommand, Category>()
-            .ForMember(x => x.Id, opt => opt.Ignore());
+        CreateMap<UpdateCategoryCommand, Category>();
 
         CreateMap<UpdateCourseCommand, Course>()
-            .ForMember(x => x.Id, opt => opt.Ignore())
             .ForMember(x => x.Tags, opt => opt.Ignore());
 
-        CreateMap<UpdateTagCommand, Tag>()
-            .ForMember(x => x.Id, opt => opt.Ignore());
+        CreateMap<UpdateTagCommand, Tag>();
 
     }
 }

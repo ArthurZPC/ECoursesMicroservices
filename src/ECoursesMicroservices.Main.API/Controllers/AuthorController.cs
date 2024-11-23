@@ -1,4 +1,6 @@
 ﻿using ECoursesMicroservices.Infrastructure.Helpers;
+using ECoursesMicroservices.Infrastructure.Models;
+using ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,7 @@ public class AuthorController : ControllerBase
     }
 
     [HttpGet("{id:Guid}")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetAuthorById(Guid id)
     {
         var author = await _mediator.Send(new GetAuthorByIdQuery { Id = id });
@@ -26,6 +29,7 @@ public class AuthorController : ControllerBase
     }
 
     [HttpGet("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetAll([FromQuery] GetAuthorsQuery query)
     {
         var authors = await _mediator.Send(query);
@@ -35,11 +39,39 @@ public class AuthorController : ControllerBase
     }
 
     [HttpGet("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
     public async Task<ActionResult> GetAllPaged([FromQuery] GetAuthorsPagedQuery query)
     {
         var authors = await _mediator.Send(query);
         var response = ApiResponseBuilder.Create(authors);
 
         return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Create([FromBody] CreateAuthorCommand command)
+    {
+        await _mediator.Send(command);
+
+        return CreatedAtAction(nameof(Create), command);
+    }
+
+    [HttpDelete("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Delete([FromBody] DeleteAuthorCommand command)
+    {
+        await _mediator.Send(command);
+
+        return NoContent();
+    }
+
+    [HttpPut("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Update([FromBody] UpdateAuthorCommand command)
+    {
+        await _mediator.Send(command);
+
+        return Ok();
     }
 }

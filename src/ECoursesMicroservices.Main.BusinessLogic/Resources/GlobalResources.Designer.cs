@@ -61,6 +61,15 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is required..
+        /// </summary>
+        internal static string Field_Required {
+            get {
+                return ResourceManager.GetString("Field_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page number should be greater than zero..
         /// </summary>
         internal static string PageNumber_ShouldBeGreaterThanZero {

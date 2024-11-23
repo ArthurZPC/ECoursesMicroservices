@@ -1,5 +1,6 @@
 ﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
+using ECoursesMicroservices.Main.BusinessLogic.Resources;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Validators;
@@ -13,7 +14,9 @@ public class DeleteAuthorValidator : AbstractValidator<DeleteAuthorCommand>
 
         RuleFor(x => x.Id)
             .NotEmpty()
+            .WithMessage(x => string.Format(GlobalResources.Field_Required, x.Id))
             .MustAsync(_authorService.IsAuthorExists)
+            .When(x => x.Id != default, ApplyConditionTo.CurrentValidator)
             .WithMessage(x => string.Format(Resources.AuthorValidatorsResources.Author_AuthorId_NotFound, x.Id));
     }
 }

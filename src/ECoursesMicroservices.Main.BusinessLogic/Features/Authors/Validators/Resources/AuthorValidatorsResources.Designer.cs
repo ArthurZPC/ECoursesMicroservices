@@ -64,9 +64,18 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Validators.R
         /// <summary>
         ///   Looks up a localized string similar to Author with Id &apos;{0}&apos; not found..
         /// </summary>
-        internal static string AuthorId_NotFound {
+        internal static string Author_AuthorId_NotFound {
             get {
-                return ResourceManager.GetString("AuthorId_NotFound", resourceCulture);
+                return ResourceManager.GetString("Author_AuthorId_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author with the specified UserId already exists..
+        /// </summary>
+        internal static string Author_UserId_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Author_UserId_AlreadyExists", resourceCulture);
             }
         }
     }

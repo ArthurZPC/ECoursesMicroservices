@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CourseId_NotFound" xml:space="preserve">
+  <data name="Course_CourseId_NotFound" xml:space="preserve">
     <value>Course with Id '{0}' not found.</value>
+  </data>
+  <data name="Course_Tags_NotFound" xml:space="preserve">
+    <value>Some Tag Id's are not found.</value>
   </data>
 </root>

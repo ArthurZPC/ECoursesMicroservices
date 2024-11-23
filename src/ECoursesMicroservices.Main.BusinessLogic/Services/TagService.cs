@@ -14,11 +14,6 @@ public class TagService : ITagService
 
     public async Task<bool> AreTagsExists(List<Guid> tags, CancellationToken cancellationToken)
     {
-        if (tags.Count == 0)
-        {
-            return true;
-        }
-
         var existingTagCount = await _context.Tags
             .AsNoTracking()
             .CountAsync(x => tags.Contains(x.Id));

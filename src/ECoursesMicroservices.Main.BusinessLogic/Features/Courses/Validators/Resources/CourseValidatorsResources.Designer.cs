@@ -64,9 +64,18 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators.R
         /// <summary>
         ///   Looks up a localized string similar to Course with Id &apos;{0}&apos; not found..
         /// </summary>
-        internal static string CourseId_NotFound {
+        internal static string Course_CourseId_NotFound {
             get {
-                return ResourceManager.GetString("CourseId_NotFound", resourceCulture);
+                return ResourceManager.GetString("Course_CourseId_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some Tag Id&apos;s are not found..
+        /// </summary>
+        internal static string Course_Tags_NotFound {
+            get {
+                return ResourceManager.GetString("Course_Tags_NotFound", resourceCulture);
             }
         }
     }

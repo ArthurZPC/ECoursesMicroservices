@@ -64,9 +64,18 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validator
         /// <summary>
         ///   Looks up a localized string similar to Category with Id &apos;{0}&apos; not found..
         /// </summary>
-        internal static string CategoryId_NotFound {
+        internal static string Category_CategoryId_NotFound {
             get {
-                return ResourceManager.GetString("CategoryId_NotFound", resourceCulture);
+                return ResourceManager.GetString("Category_CategoryId_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category with Name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string Category_CategoryName_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Category_CategoryName_AlreadyExists", resourceCulture);
             }
         }
     }

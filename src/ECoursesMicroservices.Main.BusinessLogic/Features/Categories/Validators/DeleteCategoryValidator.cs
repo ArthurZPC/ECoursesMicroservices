@@ -1,12 +1,13 @@
-﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Queries;
+﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators;
-public class GetCategoryByIdValidator : AbstractValidator<GetCategoryByIdQuery>
+public class DeleteCategoryValidator : AbstractValidator<DeleteCategoryCommand>
 {
     private readonly ICategoryService _categoryService;
-    public GetCategoryByIdValidator(ICategoryService categoryService)
+
+    public DeleteCategoryValidator(ICategoryService categoryService)
     {
         _categoryService = categoryService;
 

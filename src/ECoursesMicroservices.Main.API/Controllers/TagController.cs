@@ -1,4 +1,6 @@
 ﻿using ECoursesMicroservices.Infrastructure.Helpers;
+using ECoursesMicroservices.Infrastructure.Models;
+using ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -41,5 +43,32 @@ public class TagController : ControllerBase
         var response = ApiResponseBuilder.Create(tags);
 
         return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Create([FromBody] CreateTagCommand command)
+    {
+        await _mediator.Send(command);
+
+        return CreatedAtAction(nameof(Create), command);
+    }
+
+    [HttpDelete("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Delete([FromBody] DeleteTagCommand command)
+    {
+        await _mediator.Send(command);
+
+        return NoContent();
+    }
+
+    [HttpPut("[action]")]
+    [ProducesDefaultResponseType(typeof(ApiResponse<string>))]
+    public async Task<ActionResult> Update([FromBody] UpdateTagCommand command)
+    {
+        await _mediator.Send(command);
+
+        return Ok();
     }
 }

@@ -28,6 +28,7 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand>
         var author = _mapper.Map<Author>(request);
 
         _context.Entry(author).State = EntityState.Modified;
+        _context.Entry(author).Property(x => x.UserId).IsModified = false;
 
         await _context.SaveChangesAsync();
     }

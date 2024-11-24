@@ -1,4 +1,5 @@
-﻿using ECoursesMicroservices.Main.BusinessLogic.Features;
+﻿using ECoursesMicroservices.Infrastructure.Resources;
+using ECoursesMicroservices.Main.BusinessLogic.Features;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Validators;
@@ -8,10 +9,10 @@ public class PagedQueryValidator<T> : AbstractValidator<T> where T : PagedQuery
     {
         RuleFor(x => x.PageSize)
             .GreaterThan(0)
-            .WithMessage(Resources.GlobalResources.PageSize_ShouldBeGreaterThanZero);
+            .WithMessage(GlobalResources.PageSize_ShouldBeGreaterThanZero);
 
         RuleFor(x => x.PageNumber)
             .GreaterThan(0)
-            .WithMessage(Resources.GlobalResources.PageNumber_ShouldBeGreaterThanZero);            
+            .WithMessage(GlobalResources.PageNumber_ShouldBeGreaterThanZero);            
     }
 }

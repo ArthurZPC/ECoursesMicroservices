@@ -1,9 +1,9 @@
-﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Validators.Resources;
+﻿using ECoursesMicroservices.Infrastructure.Resources;
+using ECoursesMicroservices.Main.BusinessLogic.Features.Authors.Validators.Resources;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators.Resources;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators.Resources;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
-using ECoursesMicroservices.Main.BusinessLogic.Resources;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators;

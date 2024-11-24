@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECoursesMicroservices.Main.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECoursesMicroservices.Infrastructure", "src\ECoursesMicroservices.Infrastructure\ECoursesMicroservices.Infrastructure.csproj", "{C22DE6F3-77DC-4D92-97CC-FC9BB72BA8A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECoursesMicroservices.Main.API", "src\ECoursesMicroservices.Main.API\ECoursesMicroservices.Main.API.csproj", "{53E0D91C-EE84-4CA2-BB55-F0B137694526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECoursesMicroservices.Main.API", "src\ECoursesMicroservices.Main.API\ECoursesMicroservices.Main.API.csproj", "{53E0D91C-EE84-4CA2-BB55-F0B137694526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECoursesMicroservices.Video.Data", "src\ECoursesMicroservices.Video.Data\ECoursesMicroservices.Video.Data.csproj", "{8A82BAA3-1114-43B2-B1A6-9D4AD587C5AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECoursesMicroservices.Video.BusinessLogic", "src\ECoursesMicroservices.Video.BusinessLogic\ECoursesMicroservices.Video.BusinessLogic.csproj", "{25BBF2C7-66F2-4431-8B28-3044388AF687}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{53E0D91C-EE84-4CA2-BB55-F0B137694526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53E0D91C-EE84-4CA2-BB55-F0B137694526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53E0D91C-EE84-4CA2-BB55-F0B137694526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A82BAA3-1114-43B2-B1A6-9D4AD587C5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A82BAA3-1114-43B2-B1A6-9D4AD587C5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A82BAA3-1114-43B2-B1A6-9D4AD587C5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A82BAA3-1114-43B2-B1A6-9D4AD587C5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25BBF2C7-66F2-4431-8B28-3044388AF687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25BBF2C7-66F2-4431-8B28-3044388AF687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25BBF2C7-66F2-4431-8B28-3044388AF687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25BBF2C7-66F2-4431-8B28-3044388AF687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

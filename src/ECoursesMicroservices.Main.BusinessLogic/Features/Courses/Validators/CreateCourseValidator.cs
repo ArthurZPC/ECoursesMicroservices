@@ -3,7 +3,7 @@ using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators.Re
 using ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators.Resources;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
-using ECoursesMicroservices.Main.BusinessLogic.Resources;
+using ECoursesMicroservices.Infrastructure.Resources;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators;

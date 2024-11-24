@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
+namespace ECoursesMicroservices.Infrastructure.Resources {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class GlobalResources {
+    public class GlobalResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ECoursesMicroservices.Main.BusinessLogic.Resources.GlobalResources", typeof(GlobalResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ECoursesMicroservices.Infrastructure.Resources.GlobalResources", typeof(GlobalResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is required..
         /// </summary>
-        internal static string Field_Required {
+        public static string Field_Required {
             get {
                 return ResourceManager.GetString("Field_Required", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Page number should be greater than zero..
         /// </summary>
-        internal static string PageNumber_ShouldBeGreaterThanZero {
+        public static string PageNumber_ShouldBeGreaterThanZero {
             get {
                 return ResourceManager.GetString("PageNumber_ShouldBeGreaterThanZero", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ECoursesMicroservices.Main.BusinessLogic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Page size should be greater than zero..
         /// </summary>
-        internal static string PageSize_ShouldBeGreaterThanZero {
+        public static string PageSize_ShouldBeGreaterThanZero {
             get {
                 return ResourceManager.GetString("PageSize_ShouldBeGreaterThanZero", resourceCulture);
             }

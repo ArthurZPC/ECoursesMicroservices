@@ -1,6 +1,6 @@
-﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Commands;
+﻿using ECoursesMicroservices.Infrastructure.Resources;
+using ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
-using ECoursesMicroservices.Main.BusinessLogic.Resources;
 using FluentValidation;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Tags.Validators;

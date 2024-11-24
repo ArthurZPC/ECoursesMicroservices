@@ -1,7 +1,7 @@
 ﻿using ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Commands;
 using ECoursesMicroservices.Main.BusinessLogic.Interfaces;
-using ECoursesMicroservices.Main.BusinessLogic.Resources;
 using FluentValidation;
+using ECoursesMicroservices.Infrastructure.Resources;
 
 namespace ECoursesMicroservices.Main.BusinessLogic.Features.Courses.Validators;
 public class DeleteCourseValidator : AbstractValidator<DeleteCourseCommand>

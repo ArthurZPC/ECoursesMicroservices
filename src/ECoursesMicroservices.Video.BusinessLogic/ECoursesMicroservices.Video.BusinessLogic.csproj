@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECoursesMicroservices.Infrastructure\ECoursesMicroservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\ECoursesMicroservices.Video.Data\ECoursesMicroservices.Video.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\Videos\Validators\Resources\VideoValidatorsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>VideoValidatorsResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Features\Videos\Validators\Resources\VideoValidatorsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VideoValidatorsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

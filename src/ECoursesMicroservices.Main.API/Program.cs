@@ -1,4 +1,4 @@
-using ECoursesMicroservices.Main.API.Middlewares;
+using ECoursesMicroservices.Infrastructure;
 using ECoursesMicroservices.Main.API.Settings;
 using ECoursesMicroservices.Main.BusinessLogic.Features.Categories.Validators;
 using ECoursesMicroservices.Main.BusinessLogic.Helpers;

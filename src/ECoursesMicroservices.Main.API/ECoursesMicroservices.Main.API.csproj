@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ECoursesMicroservices.Main.Data\ECoursesMicroservices.Main.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
 </Project>
